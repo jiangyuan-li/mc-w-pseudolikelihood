@@ -4,7 +4,6 @@ Forked from: https://github.com/deshen24/syntheticNN
 """
 import sys
 import warnings 
-import random
 import numpy as np 
 import networkx as nx
 from networkx.algorithms.clique import find_cliques

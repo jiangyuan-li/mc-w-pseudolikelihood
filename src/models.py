@@ -1,10 +1,6 @@
 import numpy as np
 import torch
-import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import os 
-import numpy as np
 import scipy
 from sklearn.utils.extmath import randomized_svd
 
@@ -111,10 +107,10 @@ class MaxNorm:
             X = torch.matmul(V.real * L, V.real.T)
             
             W = X + 1/rho*Z
-            # W  = [[W1, W2], [W3, W4]]
+            
             W1 = W[:d1, :d1]
             W2 = W[:d1, d1:]
-            # W3 = W[d1:, :d1]
+            
             W4 = W[d1:, d1:]
 
             W1 = torch.clip(W1, -R, R)
@@ -158,9 +154,9 @@ class ModelFreeWeighting:
         self.tol = tol
         self.W = None
         self.verbose = verbose
-    def fit_transform(self, X): #, Atest, Dtest):
-        # self.Atest = Atest
-        # self.Dtest = Dtest
+    def fit_transform(self, X): 
+        
+        
         Y = X.copy()
         D = (~np.isnan(Y)).astype(float)
         if self.W is None:
@@ -248,8 +244,7 @@ class ModelFreeWeighting:
             cnt += 1
             if self.verbose:
                 print(f'Iterations: {cnt}/{self.maxit}, error: {error:.6f}.')
-            # true_error = np.sqrt(np.mean(((Z[:n1,n1:]-self.Atest)[self.Dtest==1])**2))
-            # print(f'True Error: {true_error}')
+            
         if cnt == self.maxit:
             print(f'Reached maximal iterations instead of convergence with error {error:.7f}')
         else:
@@ -257,7 +252,5 @@ class ModelFreeWeighting:
         return Z[:n1,n1:]
         
     def _cal_obj(self, Y, W, D, X, Z):
-#         n1, n2 = Y.shape
-#         return np.sum((D*W**.5*(Y-Z[:n1, n1:]))**2)/(n1*n2) + self.mu*np.trace(Z)
         return np.sqrt(np.mean((X-Z)**2))
     

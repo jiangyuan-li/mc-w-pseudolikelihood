@@ -108,12 +108,9 @@ def get_error(X, sim):
     rmse = np.sqrt(((trans_mu_test - data_test)**2).mean())
     mae = np.abs(trans_mu_test - data_test).mean()
     
-    # u,d,v = np.linalg.svd(mu)
-    # rank = (d>1e-6).sum()
-    # print(f'RMSE: {rmse:.6f}, MAE: {mae:.6f}, rank: {rank}')
     return val_rmse, val_mae, rmse, mae
 
-def get_error2(X, sim):
+def get_error_w_shift_scaling(X, sim):
     mu = X
     mu_val = mu[sim.Dval > 0.5]
     data_val = sim.A[sim.Dval > 0.5]
@@ -130,9 +127,6 @@ def get_error2(X, sim):
     rmse = np.sqrt(((trans_mu_test - data_test)**2).mean())
     mae = np.abs(trans_mu_test - data_test).mean()
     
-    # u,d,v = np.linalg.svd(mu)
-    # rank = (d>1e-6).sum()
-    # print(f'RMSE: {rmse:.6f}, MAE: {mae:.6f}, rank: {rank}')
     return val_rmse, val_mae, rmse, mae
 
 class Dataset:
