@@ -2,4 +2,4 @@
 Code for "A Pairwise Pseudo-likelihood Approach for Matrix Completion with Informative Missingness"
 
 # References
-* A Pairwise Pseudo-likelihood Approach for Matrix Completion with Informative Missingness, in submission to Conference on Neural Information Processing Systems (NeurIPS 2024).
+* Jiangyuan Li<sup>\*</sup>, Jiayi Wang<sup>\*</sup>, Raymond K. W. Wong and Kwun Chuen Gary Chan. A Pairwise Pseudo-likelihood Approach for Matrix Completion with Informative Missingness, 38th Conference on Neural Information Processing Systems (NeurIPS 2024).
