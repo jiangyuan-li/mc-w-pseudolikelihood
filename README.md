@@ -1,4 +1,4 @@
-# mc-w-pseudolikelihood
+# mc-w-pseudolikelihood [WIP]
 Code for "A Pairwise Pseudo-likelihood Approach for Matrix Completion with Informative Missingness"
 
 # References
