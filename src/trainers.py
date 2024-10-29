@@ -103,14 +103,12 @@ def pocs(X, a=10, epochs=1000, eps=1e-6):
     return X
 
 
-def pseudo_solve(sim, idx, thres):
+def pseudo_solve(sim, idx, thres, lr=1., epochs=100):
     si = SoftImpute(thres, verbose=False)
     X_si = si.fit_transform(sim.Ynan)
     model = pairwiseModel(sim.Ynan)
     model.mu.weight.data = torch.tensor(X_si)  # model.mu.weight.data.mean()
-    lr = 1.
     thres = thres
-    epochs = 100
     x = get_diff(sim.Ynan)
     start = time.time()
 
