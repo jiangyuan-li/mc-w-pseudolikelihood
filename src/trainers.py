@@ -117,7 +117,8 @@ def pseudo_solve(sim, idx, thres, lr=1., epochs=100):
         loss.backward()
         grad = model.mu.weight.grad.data
         model.mu.weight.data -= lr * grad
-
+        model.mu.weight.grad.data.zero_()
+        
         u, d, v = torch.svd(model.mu.weight.data)
         d = torch.clip(d-thres, 0)
         nuclear_norm = d.sum().item()
